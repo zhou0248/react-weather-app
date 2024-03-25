@@ -1,0 +1,22 @@
+.card {
+  background-color: lightsalmon;
+  color: #ebf6ff;
+  font-weight: bold;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn {
+  background-color: darkolivegreen;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  background-color: darkgreen;
+  color: wheat;
+}

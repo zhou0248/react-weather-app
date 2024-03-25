@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import LocationCard from "./components/LocationCard/LocationCard";
+import LocationBar from "./components/LocationBar/LocationBar";
 import "./App.css";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,13 +11,9 @@ function App() {
   return (
     <>
       <Header />
-      <div className="card-group">
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
+      <Loader />
+      <div>
+        <LocationBar />
       </div>
     </>
   );

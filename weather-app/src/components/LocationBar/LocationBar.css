@@ -1,0 +1,6 @@
+.card-group {
+  display: grid;
+  grid-template-columns: 6 1fr;
+  gap: 1rem;
+}
+/* TOFIX: grid-template */

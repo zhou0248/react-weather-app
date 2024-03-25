@@ -4,9 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-.card-group {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-}

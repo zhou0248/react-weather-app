@@ -6,31 +6,32 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import FeedbackBar from "./components/FeedbackBar/FeedbackBar";
 import "./App.css";
 
-/*
-Assignments to the 'locationCards' variable from inside React Hook useEffect
-will be lost after each render. To preserve the value over time, store it in a
-useRef Hook and keep the mutable value in the '.current' property. Otherwise,
-you can move this variable directly inside useEffect.*/
-
 function App() {
   const [location, setLocation] = useState(null);
-  const [message, setMessage] = useState("");
   const [locationList, setLocationList] = useState([]);
+  const [city, setCity] = useState("");
+  const [message, setMessage] = useState("");
   const api_key = "78e3b8ef24c1779db5533624c3d3a9e5";
 
   function removeLocation(id) {
     setLocationList(locationList.filter((location) => location.id !== id));
   }
-
+  //TOFIX: repeated location shouldn't be allowed
+  // only 6 locations are allowed
   useEffect(() => {
     if (location) {
+      locationList.forEach((loc) => {
+        if (loc.name === location.name) {
+          setMessage("Location already added");
+          return;
+        }
+      });
       locationList.push(location);
-      console.log(locationList);
     }
     return () => {
       setLocation("");
     };
-  }, [location, locationList]);
+  }, [location]);
 
   return (
     <>
@@ -41,8 +42,14 @@ function App() {
         setLocation={setLocation}
         message={message}
         setMessage={setMessage}
+        setCity={setCity}
+        city={city}
       />
-      <FeedbackBar message={message} setMessage={setMessage} />
+      <FeedbackBar
+        message={message}
+        setMessage={setMessage}
+        location={location}
+      />
       <div>
         <LocationBar locationList={locationList} remove={removeLocation} />
       </div>

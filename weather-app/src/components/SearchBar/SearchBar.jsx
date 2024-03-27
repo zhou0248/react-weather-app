@@ -1,8 +1,12 @@
 import "./SearchBar.css";
-import { useState } from "react";
 
-export default function SearchBar({ api_key, setLocation, setMessage }) {
-  const [city, setCity] = useState("");
+export default function SearchBar({
+  api_key,
+  setLocation,
+  setMessage,
+  city,
+  setCity,
+}) {
   function getGeoLocation() {
     if (city === null || city === undefined || city === "") {
       setMessage("Please enter a city name");
@@ -25,7 +29,6 @@ export default function SearchBar({ api_key, setLocation, setMessage }) {
           );
           return;
         }
-        // TODO: check for extra space in the city name
         let location = {
           id: crypto.randomUUID(),
           lat: data[0].lat,
@@ -56,7 +59,6 @@ export default function SearchBar({ api_key, setLocation, setMessage }) {
               value={city}
               placeholder="Enter a City Name, Country"
               onChange={(ev) => setCity(ev.target.value)}
-              required
             />
           </label>
           <button>Search</button>

@@ -13,10 +13,13 @@ function App() {
   const [locationList, setLocationList] = useState([]);
   const [message, setMessage] = useState("");
   const [weather, setWeather] = useState(null);
+  const [locationId, setLocationId] = useState();
   const api_key = "78e3b8ef24c1779db5533624c3d3a9e5";
 
   function removeLocation(id) {
     setLocationList(locationList.filter((location) => location.id !== id));
+    setSelectedLocation(null);
+    setLocationId(null);
   }
 
   //TODO: option to toggle between metric and imperial units
@@ -30,7 +33,6 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         let weather = {
           temp: data.main.temp,
           feelsLike: data.main.feels_like,
@@ -76,6 +78,8 @@ function App() {
             locationList={locationList}
             remove={removeLocation}
             selectLocation={setSelectedLocation}
+            locationId={locationId}
+            setLocationId={setLocationId}
           />
         ) : (
           <p> No Location Added yet</p>

@@ -2,9 +2,13 @@ import LocationCard from "../LocationCard/LocationCard";
 import { useEffect, useState } from "react";
 import "./LocationBar.css";
 
-function LocationBar({ locationList, remove, selectLocation }) {
-  const [locationId, setLocationId] = useState();
-
+function LocationBar({
+  locationList,
+  remove,
+  selectLocation,
+  locationId,
+  setLocationId,
+}) {
   const locationCards = locationList.map((place) => (
     <LocationCard
       city={place.name}

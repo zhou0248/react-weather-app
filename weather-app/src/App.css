@@ -4,4 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
-/* TODO: add a font */
+/* TODO: apply font & add variables */
+
+.locationList {
+  padding: 3rem;
+  background-color: mistyrose;
+  color: black;
+}

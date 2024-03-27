@@ -1,11 +1,16 @@
 import "./LocationCard.css";
 
-export default function LocationCard(place) {
+export default function LocationCard({ city, country, id, remove }) {
   return (
     <li className="card" onClick={() => {}}>
-      <h3> {place.city} </h3>
-      <p> {place.country} </p>
-      <button className="btn" onClick={() => {}}>
+      <h3> {city} </h3>
+      <p> {country} </p>
+      <button
+        className="btn"
+        onClick={() => {
+          remove(id);
+        }}
+      >
         Remove
       </button>
     </li>

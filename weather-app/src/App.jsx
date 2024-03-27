@@ -13,14 +13,23 @@ useRef Hook and keep the mutable value in the '.current' property. Otherwise,
 you can move this variable directly inside useEffect.*/
 
 function App() {
-  const [location, setLocation] = useState([]);
+  const [location, setLocation] = useState(null);
   const [message, setMessage] = useState("");
-  const locationList = [];
+  const [locationList, setLocationList] = useState([]);
   const api_key = "78e3b8ef24c1779db5533624c3d3a9e5";
 
+  function removeLocation(id) {
+    setLocationList(locationList.filter((location) => location.id !== id));
+  }
+
   useEffect(() => {
-    locationList.push(location);
-    console.log(locationList);
+    if (location) {
+      locationList.push(location);
+      console.log(locationList);
+    }
+    return () => {
+      setLocation("");
+    };
   }, [location, locationList]);
 
   return (
@@ -35,7 +44,10 @@ function App() {
       />
       <FeedbackBar message={message} setMessage={setMessage} />
       <div>
-        <LocationBar locationList={locationList} />
+        <LocationBar
+          locationList={locationList}
+          removeLocation={removeLocation}
+        />
       </div>
     </>
   );

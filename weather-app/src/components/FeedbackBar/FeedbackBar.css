@@ -1,0 +1,6 @@
+.feedback-bar > p {
+  background-color: rgb(106, 7, 7);
+  color: whitesmoke;
+  margin: 1rem;
+  font-weight: bold;
+}

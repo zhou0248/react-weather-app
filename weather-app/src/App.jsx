@@ -44,10 +44,7 @@ function App() {
       />
       <FeedbackBar message={message} setMessage={setMessage} />
       <div>
-        <LocationBar
-          locationList={locationList}
-          removeLocation={removeLocation}
-        />
+        <LocationBar locationList={locationList} remove={removeLocation} />
       </div>
     </>
   );

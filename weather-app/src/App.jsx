@@ -28,7 +28,8 @@ function App() {
     fetch(url)
       .then((res) => {
         if (!res.ok) {
-          setMessage(`No information found for City ${location.name}`);
+          // setMessage(`No information found for City ${location.name}`);
+          throw new Error(`No information found for City ${location.name}`);
         }
         return res.json();
       })
@@ -43,6 +44,10 @@ function App() {
           icon: data.weather[0].icon,
         };
         setWeather(weather);
+      })
+      .catch((error) => {
+        console.error(error);
+        setMessage(error.message);
       });
   }
 

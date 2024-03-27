@@ -24,17 +24,15 @@ export default function SearchBar({
     fetch(url)
       .then((res) => {
         if (!res.ok) {
-          setMessage(`No information found for City ${city}`);
-          throw new Error(`Can not find weather information for City ${city}`);
+          throw new Error(`No information for City ${city}`);
         }
         return res.json();
       })
       .then((data) => {
         if (data.length === 0) {
-          setMessage(
+          throw new Error(
             `${city} not found. Are you sure it's a valid city name? Please check for spelling and unnecessary/missing spaces.`
           );
-          return;
         }
         let location = {
           id: crypto.randomUUID(),
@@ -51,6 +49,7 @@ export default function SearchBar({
       })
       .catch((error) => {
         console.error(error);
+        setMessage(error.message);
       });
   }
 

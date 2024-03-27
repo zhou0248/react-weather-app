@@ -1,10 +1,9 @@
 import "./Header.css";
 
-export default function Header(props) {
-  let str = props.state;
+export default function Header() {
   return (
     <header className="masthead">
-      <h1>React Weather {props.state} App</h1>
+      <h1>React Weather App</h1>
     </header>
   );
 }

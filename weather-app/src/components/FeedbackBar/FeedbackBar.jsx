@@ -4,7 +4,7 @@ export default function FeedbackBar({ message, setMessage, location }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMessage("");
-    }, 3000);
+    }, 4500);
     return () => {
       clearTimeout(timer);
     };

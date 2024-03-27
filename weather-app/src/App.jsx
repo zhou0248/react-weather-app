@@ -9,7 +9,6 @@ import "./App.css";
 function App() {
   const [location, setLocation] = useState(null);
   const [locationList, setLocationList] = useState([]);
-  const [city, setCity] = useState("");
   const [message, setMessage] = useState("");
   const api_key = "78e3b8ef24c1779db5533624c3d3a9e5";
 
@@ -20,12 +19,6 @@ function App() {
   // only 6 locations are allowed
   useEffect(() => {
     if (location) {
-      locationList.forEach((loc) => {
-        if (loc.name === location.name) {
-          setMessage("Location already added");
-          return;
-        }
-      });
       locationList.push(location);
     }
     return () => {
@@ -42,8 +35,7 @@ function App() {
         setLocation={setLocation}
         message={message}
         setMessage={setMessage}
-        setCity={setCity}
-        city={city}
+        locationList={locationList}
       />
       <FeedbackBar
         message={message}

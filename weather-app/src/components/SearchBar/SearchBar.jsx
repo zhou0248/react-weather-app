@@ -1,17 +1,19 @@
 import "./SearchBar.css";
-
+import { useState } from "react";
 export default function SearchBar({
   api_key,
   setLocation,
   setMessage,
-  city,
-  setCity,
+  locationList,
 }) {
-  function getGeoLocation() {
-    if (city === null || city === undefined || city === "") {
+  const [city, setCity] = useState("");
+
+  function getGeoLocation(city) {
+    if (!city) {
       setMessage("Please enter a city name");
       return;
     }
+
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${api_key}`
     )
@@ -25,7 +27,7 @@ export default function SearchBar({
       .then((data) => {
         if (data.length === 0) {
           setMessage(
-            `${city} not found. Are you sure it's a valid city name? Please check for spelling and unnecessary spaces.`
+            `${city} not found. Are you sure it's a valid city name? Please check for spelling and unnecessary/missing spaces.`
           );
           return;
         }
@@ -36,6 +38,10 @@ export default function SearchBar({
           name: data[0].name,
           country: data[0].country,
         };
+        const cityName = location.name.toLowerCase();
+        if (checkRepeatedCity(cityName)) {
+          return;
+        }
         setLocation(location);
       })
       .catch((error) => {
@@ -43,13 +49,44 @@ export default function SearchBar({
       });
   }
 
+  function continueSearching(city) {
+    let continueSearching = true;
+    const cityName = city.toLowerCase();
+    if (locationList.length >= 6) {
+      setMessage("You can only add up to 6 locations.");
+      continueSearching = false;
+      return;
+    }
+    if (checkRepeatedCity(cityName)) {
+      continueSearching = false;
+      return;
+    }
+    return continueSearching;
+  }
+
+  function checkRepeatedCity(newLocationName) {
+    let repeatedCity = false;
+    locationList.forEach((location) => {
+      const locationName = location.name.toLowerCase();
+      if (locationName === newLocationName) {
+        setMessage(
+          "This location is already in the list, please enter another city name."
+        );
+        repeatedCity = true;
+      }
+    });
+    return repeatedCity;
+  }
+
   return (
     <div className="search-bar">
-      {/* add a dropdown menu for countries */}
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
-          getGeoLocation();
+          if (!continueSearching(city)) {
+            return;
+          }
+          getGeoLocation(city);
         }}
       >
         <div>
@@ -58,10 +95,18 @@ export default function SearchBar({
             <input
               value={city}
               placeholder="Enter a City Name, Country"
-              onChange={(ev) => setCity(ev.target.value)}
+              onChange={(ev) => {
+                setCity(ev.target.value);
+              }}
             />
           </label>
-          <button>Search</button>
+          <button
+            onClick={() => {
+              setCity(city);
+            }}
+          >
+            Search
+          </button>
         </div>
       </form>
     </div>

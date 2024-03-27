@@ -14,9 +14,10 @@ export default function SearchBar({
       return;
     }
 
-    /*TOFIX: an extra/missing space will result in a 404 error; 
-    e.g. "new york" works, "newyork" returns no results.
-    "yellowknife" works, "yellow knife" returns no results.
+    /*TOFIX: how to handle extra/missing spaces in city names; 
+    e.g. "new york" works, "newyork" -- no results.
+    "yellowknife" works, "yellow knife" -- no results.
+    "whitehorse" -- Canadian city, "white horse" -- US city.
     */
 
     let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${api_key}`;

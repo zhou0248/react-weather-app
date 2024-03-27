@@ -19,7 +19,7 @@ function App() {
     setLocationList(locationList.filter((location) => location.id !== id));
   }
 
-  //TODO: toggle between metric and imperial units
+  //TODO: option to toggle between metric and imperial units
   function getWeather(location) {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${api_key}&units=metric`;
     fetch(url)
@@ -30,7 +30,16 @@ function App() {
         return res.json();
       })
       .then((data) => {
-        let weather = {};
+        console.log(data);
+        let weather = {
+          temp: data.main.temp,
+          feelsLike: data.main.feels_like,
+          windSpeed: data.wind.speed,
+          tempMin: data.main.temp_min,
+          tempMax: data.main.temp_max,
+          description: data.weather[0].description,
+          icon: data.weather[0].icon,
+        };
         setWeather(weather);
       });
   }
@@ -76,6 +85,7 @@ function App() {
         selectedLocation={selectedLocation}
         getWeather={getWeather}
         weather={weather}
+        setWeather={setWeather}
       />
     </>
   );

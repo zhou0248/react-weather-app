@@ -6,8 +6,7 @@
   animation: 0.4s linear 0.2s infinite alternate both running jump1;
 }
 
-/* TOFIX: loader animation */
-
+/* TODO: loader animation: make each character jump at different starting time */
 .loader::before,
 .loader::after {
   content: "";

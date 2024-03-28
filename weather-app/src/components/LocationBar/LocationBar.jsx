@@ -1,6 +1,5 @@
 import LocationCard from "../LocationCard/LocationCard";
 import { PropTypes } from "prop-types";
-import { useEffect } from "react";
 import "./LocationBar.css";
 
 function LocationBar({

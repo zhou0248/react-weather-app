@@ -106,6 +106,9 @@ export default function SearchBar({
           <label htmlFor="city">
             *City, Province, Country:
             <input
+              type="text"
+              id="city"
+              name="city"
               value={city}
               placeholder="Enter a City (required), Province, Country"
               onChange={(ev) => {
@@ -125,7 +128,7 @@ export default function SearchBar({
             <input
               type="radio"
               id="metric"
-              name="units"
+              name="metric"
               defaultChecked
               onClick={() => {
                 setUseMetricUnits(true);
@@ -137,7 +140,7 @@ export default function SearchBar({
             <input
               type="radio"
               id="imperial"
-              name="units"
+              name="imperial"
               onClick={() => {
                 setUseMetricUnits(false);
                 setSelectedLocation(null);

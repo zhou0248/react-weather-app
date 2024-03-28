@@ -7,12 +7,19 @@ export default function LocationCard({
   id,
   remove,
   setLocationId,
+  selectLocation,
+  locationList,
 }) {
+  function findLocation(id) {
+    return locationList.find((location) => location.id === id);
+  }
+
   return (
     <li
       className="card"
       onClick={() => {
         setLocationId(id);
+        selectLocation(findLocation(id));
       }}
     >
       <h3> {city} </h3>
@@ -36,4 +43,6 @@ LocationCard.propTypes = {
   id: PropTypes.string,
   remove: PropTypes.func,
   setLocationId: PropTypes.func,
+  selectLocation: PropTypes.func,
+  locationList: PropTypes.array,
 };

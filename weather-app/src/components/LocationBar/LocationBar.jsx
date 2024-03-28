@@ -19,15 +19,10 @@ function LocationBar({
       remove={remove}
       locationId={locationId}
       setLocationId={setLocationId}
+      selectLocation={selectLocation}
+      locationList={locationList}
     />
   ));
-
-  function findLocation(id) {
-    return locationList.find((location) => location.id === id);
-  }
-  useEffect(() => {
-    selectLocation(findLocation(locationId));
-  }, [locationId]);
 
   return <ul className="card-group">{locationCards}</ul>;
 }

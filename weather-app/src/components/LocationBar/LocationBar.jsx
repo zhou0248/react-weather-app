@@ -1,5 +1,6 @@
 import LocationCard from "../LocationCard/LocationCard";
-import { useEffect, useState } from "react";
+import { PropTypes } from "prop-types";
+import { useEffect } from "react";
 import "./LocationBar.css";
 
 function LocationBar({
@@ -32,3 +33,11 @@ function LocationBar({
 }
 
 export default LocationBar;
+
+LocationBar.propTypes = {
+  locationList: PropTypes.array,
+  remove: PropTypes.func,
+  selectLocation: PropTypes.func,
+  locationId: PropTypes.string,
+  setLocationId: PropTypes.func,
+};

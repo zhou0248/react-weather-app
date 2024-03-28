@@ -1,5 +1,7 @@
 import "./SearchBar.css";
 import { useState } from "react";
+import { PropTypes } from "prop-types";
+
 export default function SearchBar({
   api_key,
   setLocation,
@@ -121,3 +123,10 @@ export default function SearchBar({
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  api_key: PropTypes.string,
+  setLocation: PropTypes.func,
+  setMessage: PropTypes.func,
+  locationList: PropTypes.array,
+};

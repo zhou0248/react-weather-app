@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { PropTypes } from "prop-types";
 import Loader from "../Loader/Loader";
 import "./Weather.css";
 
@@ -39,3 +40,10 @@ export default function Weather({
     </>
   );
 }
+
+Weather.propTypes = {
+  getWeather: PropTypes.func,
+  selectedLocation: PropTypes.object,
+  weather: PropTypes.object,
+  setWeather: PropTypes.func,
+};

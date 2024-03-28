@@ -1,5 +1,5 @@
 import "./LocationCard.css";
-import { useEffect, useState } from "react";
+import { PropTypes } from "prop-types";
 
 export default function LocationCard({
   city,
@@ -29,3 +29,11 @@ export default function LocationCard({
     </li>
   );
 }
+
+LocationCard.propTypes = {
+  city: PropTypes.string,
+  country: PropTypes.string,
+  id: PropTypes.string,
+  remove: PropTypes.func,
+  setLocationId: PropTypes.func,
+};

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { PropTypes } from "prop-types";
 import "./FeedbackBar.css";
 export default function FeedbackBar({ message, setMessage, location }) {
   useEffect(() => {
@@ -15,3 +16,15 @@ export default function FeedbackBar({ message, setMessage, location }) {
     </div>
   );
 }
+
+FeedbackBar.propTypes = {
+  message: PropTypes.string,
+  setMessage: PropTypes.func,
+  location: PropTypes.shape({
+    id: PropTypes.string,
+    lat: PropTypes.number,
+    lon: PropTypes.number,
+    name: PropTypes.string,
+    country: PropTypes.string,
+  }),
+};

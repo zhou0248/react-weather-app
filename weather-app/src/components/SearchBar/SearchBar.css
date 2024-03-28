@@ -19,5 +19,12 @@ input:focus {
 }
 .btn {
   margin-left: 1rem;
+  margin-top: 1rem;
   font-size: 1rem;
+}
+.unitsOptions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }

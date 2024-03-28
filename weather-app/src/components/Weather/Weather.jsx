@@ -8,8 +8,10 @@ export default function Weather({
   selectedLocation,
   weather,
   setWeather,
+  useMetricUnits,
 }) {
   // TODO: set a timer for loader
+  let unit = useMetricUnits ? "°C" : "°F";
   useEffect(() => {
     if (selectedLocation) {
       getWeather(selectedLocation);
@@ -30,11 +32,19 @@ export default function Weather({
             src={`http://openweathermap.org/img/w/${weather.icon}.png`}
             alt="weather icon"
           ></img>
-          <p>Temperature: {weather.temp} °C</p>
-          <p>Feels Like: {weather.feelsLike} °C</p>
+          <p>
+            Temperature: {weather.temp} {unit}
+          </p>
+          <p>
+            Feels Like: {weather.feelsLike} {unit}
+          </p>
           <p>Wind Speed: {weather.windSpeed} m/s</p>
-          <p>Min Temperature: {weather.tempMin} °C</p>
-          <p>Max Temperature: {weather.tempMax} °C</p>
+          <p>
+            Min Temperature: {weather.tempMin} {unit}
+          </p>
+          <p>
+            Max Temperature: {weather.tempMax} {unit}
+          </p>
         </div>
       )}
     </>
@@ -46,4 +56,5 @@ Weather.propTypes = {
   selectedLocation: PropTypes.object,
   weather: PropTypes.object,
   setWeather: PropTypes.func,
+  useMetricUnits: PropTypes.bool,
 };

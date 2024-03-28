@@ -7,6 +7,9 @@ export default function SearchBar({
   setLocation,
   setMessage,
   locationList,
+  setUseMetricUnits,
+  setSelectedLocation,
+  setLocationId,
 }) {
   const [city, setCity] = useState("");
 
@@ -22,7 +25,7 @@ export default function SearchBar({
     "whitehorse" -- Canadian city, "white horse" -- US city.
     */
 
-    let url = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${api_key}`;
+    let url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${api_key}`;
     fetch(url)
       .then((res) => {
         if (!res.ok) {
@@ -65,7 +68,9 @@ export default function SearchBar({
       }
       if (checkRepeatedCity(cityName)) {
         continueSearching = false;
-        return;
+        throw new Error(
+          "This location is already in the list, please enter another city name."
+        );
       }
       return continueSearching;
     } catch (error) {
@@ -79,15 +84,13 @@ export default function SearchBar({
     locationList.forEach((location) => {
       const locationName = location.name.toLowerCase();
       if (locationName === newLocationName) {
-        setMessage(
-          "This location is already in the list, please enter another city name."
-        );
         repeatedCity = true;
       }
     });
     return repeatedCity;
   }
 
+  //TODO: separate different search fields for city, province, country
   return (
     <div className="search-bar">
       <form
@@ -118,6 +121,31 @@ export default function SearchBar({
           >
             Search
           </button>
+          <div className="unitsOptions">
+            <input
+              type="radio"
+              id="metric"
+              name="units"
+              defaultChecked
+              onClick={() => {
+                setUseMetricUnits(true);
+                setSelectedLocation(null);
+                setLocationId(null);
+              }}
+            />
+            <label htmlFor="metric">Celsius (°C)</label>
+            <input
+              type="radio"
+              id="imperial"
+              name="units"
+              onClick={() => {
+                setUseMetricUnits(false);
+                setSelectedLocation(null);
+                setLocationId(null);
+              }}
+            />
+            <label htmlFor="imperial">Fahrenheit (°F)</label>
+          </div>
         </div>
       </form>
     </div>
@@ -129,4 +157,7 @@ SearchBar.propTypes = {
   setLocation: PropTypes.func,
   setMessage: PropTypes.func,
   locationList: PropTypes.array,
+  setUseMetricUnits: PropTypes.func,
+  setSelectedLocation: PropTypes.func,
+  setLocationId: PropTypes.func,
 };

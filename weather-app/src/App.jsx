@@ -6,7 +6,6 @@ import FeedbackBar from "./components/FeedbackBar/FeedbackBar";
 import Weather from "./components/Weather/Weather";
 import "./App.css";
 
-//TODO: proptype validation
 function App() {
   const [location, setLocation] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -14,6 +13,7 @@ function App() {
   const [message, setMessage] = useState("");
   const [weather, setWeather] = useState(null);
   const [locationId, setLocationId] = useState(null);
+  const [useMetricUnits, setUseMetricUnits] = useState(true);
   const api_key = "78e3b8ef24c1779db5533624c3d3a9e5";
 
   function removeLocation(id) {
@@ -24,7 +24,11 @@ function App() {
 
   //TODO: Add option to toggle between metric and imperial units
   function getWeather(location) {
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lon}&appid=${api_key}&units=metric`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${
+      location.lat
+    }&lon=${location.lon}&appid=${api_key}&units=${
+      useMetricUnits ? "metric" : "imperial"
+    }`;
     fetch(url)
       .then((res) => {
         if (!res.ok) {
@@ -68,6 +72,9 @@ function App() {
         message={message}
         setMessage={setMessage}
         locationList={locationList}
+        setUseMetricUnits={setUseMetricUnits}
+        setSelectedLocation={setSelectedLocation}
+        setLocationId={setLocationId}
       />
       {message ? (
         <FeedbackBar
@@ -94,6 +101,7 @@ function App() {
         getWeather={getWeather}
         weather={weather}
         setWeather={setWeather}
+        useMetricUnits={useMetricUnits}
       />
     </>
   );

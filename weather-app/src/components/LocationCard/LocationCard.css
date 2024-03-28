@@ -5,7 +5,7 @@
   margin: 1rem;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow);
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -16,18 +16,5 @@
 .card:hover,
 .card:focus {
   border: 3px solid var(--color-primary-darkest);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.btn {
-  background-color: darkolivegreen;
-  color: var(--color-secondary-light);
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-}
-
-.btn:hover {
-  background-color: darkgreen;
-  color: var(--color-secondary);
+  box-shadow: var(--shadow-hover);
 }

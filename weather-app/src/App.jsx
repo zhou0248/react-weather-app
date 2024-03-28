@@ -22,7 +22,6 @@ function App() {
     setLocationId(null);
   }
 
-  //TODO: Add option to toggle between metric and imperial units
   function getWeather(location) {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${
       location.lat

@@ -13,6 +13,12 @@
   align-items: center;
 }
 
+.card:hover,
+.card:focus {
+  border: 3px solid var(--color-primary-darkest);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
 .btn {
   background-color: darkolivegreen;
   color: var(--color-secondary-light);

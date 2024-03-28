@@ -38,7 +38,7 @@ export default function Weather({
           <p>
             Feels Like: {weather.feelsLike} {unit}
           </p>
-          <p>Wind Speed: {weather.windSpeed} m/s</p>
+          <p> Wind Speed: {weather.windSpeed} m/s </p>
           <p>
             Min Temperature: {weather.tempMin} {unit}
           </p>

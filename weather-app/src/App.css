@@ -3,11 +3,99 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  --color-background-dark: burlywood;
+  --color-background-light: mistyrose;
+  --color-background-warm: lightsalmon;
+  --color-background: peachpuff;
+  --color-primary: darkblue;
+  --color-primary-darker: midnightblue;
+  --color-primary-darkest: rgb(12, 12, 66);
+  --color-secondary: lavenderblush;
+  --color-secondary-light: whitesmoke;
 }
-/* TODO: apply font & add variables */
 
+/* --------- Type Hierarchy ------------*/
+
+h1 {
+  font-size: 1.802rem;
+}
+
+h2 {
+  font-size: 1.602rem;
+}
+
+h3 {
+  font-size: 1.424rem;
+}
+
+h4 {
+  font-size: 1.266rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 45rem) {
+  h1 {
+    font-size: 2.488rem;
+  }
+
+  h2 {
+    font-size: 2.074rem;
+  }
+
+  h3 {
+    font-size: 1.728rem;
+  }
+
+  h4 {
+    font-size: 1.44rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 60rem) {
+  h1 {
+    font-size: 3.052rem;
+  }
+
+  h2 {
+    font-size: 2.441rem;
+  }
+
+  h3 {
+    font-size: 1.953rem;
+  }
+
+  h4 {
+    font-size: 1.563rem;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+}
+/* ------------- Everything Else---------------- */
 .locationList {
   padding: 3rem;
-  background-color: mistyrose;
-  color: black;
+  background-color: var(--color-background-light);
+  color: var(--color-primary-darker);
+  font-weight: bold;
 }

@@ -28,7 +28,6 @@ function App() {
     fetch(url)
       .then((res) => {
         if (!res.ok) {
-          // setMessage(`No information found for City ${location.name}`);
           throw new Error(`No information found for City ${location.name}`);
         }
         return res.json();

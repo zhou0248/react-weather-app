@@ -1,11 +1,11 @@
 .masthead {
-  background-color: peachpuff;
+  background-color: var(--color-background);
   padding: 2rem;
 }
 
 .masthead h1 {
-  color: darkblue;
-  padding: 1rem;
+  color: var(--color-primary);
+  padding-top: 1rem;
   text-align: center;
   margin: 0;
 }

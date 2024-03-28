@@ -29,11 +29,11 @@ export default function Weather({
             src={`http://openweathermap.org/img/w/${weather.icon}.png`}
             alt="weather icon"
           ></img>
-          <p>Temperature: {weather.temp}</p>
-          <p>Feels Like: {weather.feelsLike}</p>
-          <p>Wind Speed: {weather.windSpeed}</p>
-          <p>Min Temperature: {weather.tempMin}</p>
-          <p>Max Temperature: {weather.tempMax}</p>
+          <p>Temperature: {weather.temp} °C</p>
+          <p>Feels Like: {weather.feelsLike} °C</p>
+          <p>Wind Speed: {weather.windSpeed} m/s</p>
+          <p>Min Temperature: {weather.tempMin} °C</p>
+          <p>Max Temperature: {weather.tempMax} °C</p>
         </div>
       )}
     </>

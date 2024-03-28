@@ -54,18 +54,22 @@ export default function SearchBar({
   }
 
   function continueSearching(city) {
-    let continueSearching = true;
-    const cityName = city.toLowerCase();
-    if (locationList.length >= 6) {
-      setMessage("You can only add up to 6 locations.");
-      continueSearching = false;
-      return;
+    try {
+      let continueSearching = true;
+      const cityName = city.toLowerCase();
+      if (locationList.length >= 6) {
+        continueSearching = false;
+        throw new Error("You can only add up to 6 locations.");
+      }
+      if (checkRepeatedCity(cityName)) {
+        continueSearching = false;
+        return;
+      }
+      return continueSearching;
+    } catch (error) {
+      console.error(error);
+      setMessage(error.message);
     }
-    if (checkRepeatedCity(cityName)) {
-      continueSearching = false;
-      return;
-    }
-    return continueSearching;
   }
 
   function checkRepeatedCity(newLocationName) {
@@ -94,7 +98,7 @@ export default function SearchBar({
         }}
       >
         <div>
-          <label>
+          <label htmlFor="city">
             *City, Country:
             <input
               value={city}
@@ -105,6 +109,7 @@ export default function SearchBar({
             />
           </label>
           <button
+            className="btn"
             onClick={() => {
               setCity(city);
             }}

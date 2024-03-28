@@ -17,7 +17,7 @@ export default function LocationCard({
     >
       <h3> {city} </h3>
       <p> {country} </p>
-      <button
+      <span
         className="btn"
         onClick={(ev) => {
           remove(id);
@@ -25,7 +25,7 @@ export default function LocationCard({
         }}
       >
         Remove
-      </button>
+      </span>
     </li>
   );
 }

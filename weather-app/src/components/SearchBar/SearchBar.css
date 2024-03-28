@@ -1,12 +1,23 @@
 .search-bar {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: var(--color-background-dark);
   padding: 1.5rem;
   color: var(--color-primary-darker);
   font-weight: bold;
 }
+input {
+  padding: 0.2rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-primary-darker);
+  border-radius: 0.2rem;
+}
+input:focus {
+  outline: 2px solid var(--color-primary);
+}
 .btn {
   margin-left: 1rem;
+  font-size: 1rem;
 }
-/* TODO: style input field */

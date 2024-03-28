@@ -13,7 +13,7 @@ function App() {
   const [locationList, setLocationList] = useState([]);
   const [message, setMessage] = useState("");
   const [weather, setWeather] = useState(null);
-  const [locationId, setLocationId] = useState();
+  const [locationId, setLocationId] = useState(null);
   const api_key = "78e3b8ef24c1779db5533624c3d3a9e5";
 
   function removeLocation(id) {

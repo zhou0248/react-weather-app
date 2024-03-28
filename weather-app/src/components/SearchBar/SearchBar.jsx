@@ -99,10 +99,10 @@ export default function SearchBar({
       >
         <div>
           <label htmlFor="city">
-            *City, Country:
+            *City, Province, Country:
             <input
               value={city}
-              placeholder="Enter a City Name, Country"
+              placeholder="Enter a City (required), Province, Country"
               onChange={(ev) => {
                 setCity(ev.target.value);
               }}

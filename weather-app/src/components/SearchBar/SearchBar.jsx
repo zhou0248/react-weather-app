@@ -128,7 +128,7 @@ export default function SearchBar({
             <input
               type="radio"
               id="metric"
-              name="metric"
+              name="units"
               defaultChecked
               onClick={() => {
                 setUseMetricUnits(true);
@@ -140,7 +140,7 @@ export default function SearchBar({
             <input
               type="radio"
               id="imperial"
-              name="imperial"
+              name="units"
               onClick={() => {
                 setUseMetricUnits(false);
                 setSelectedLocation(null);
